@@ -66,9 +66,10 @@ class GameWindow():
         time.sleep(0.1)
 
     def grab_frame(self):
-        with mss.mss() as sct:
+        with mss() as sct:
             self.rect.update()
             monitor = {"top": self.rect.top, "left": self.rect.left, "width": self.rect.width, "height": self.rect.height}
+            #monitor = (self.rect.left, self.rect.top, self.rect.right, self.rect.bottom)       #alternate form of grabframe
             return np.array(sct.grab(monitor))[:, :, :-1]
 
     def local_to_global(self, point):
@@ -89,14 +90,6 @@ class GameWindow():
         user32.EnumWindows(enum_proc, 0)
         return None if len(results) == 0 else results[0]
 
-    def grab_frame(self):
-        self.rect.update()
-        #print(str(self.mainWin.rect.left) + ", " + str(self.mainWin.rect.top) + ", " + str(self.mainWin.rect.width) + ", " + str(self.mainWin.rect.height))
-        bounding_box = {'top': self.rect.top, 'left': self.rect.left, 'width': self.rect.width, 'height': self.rect.height}
-        sct = mss()
-        img = sct.grab(bounding_box)
-        img = np.array(img)
-        return img
 
 class WindowRect():
     def __init__(self, window_handle):

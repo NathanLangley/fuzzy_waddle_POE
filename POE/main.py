@@ -27,11 +27,12 @@ class GUI(QWidget):
         ui_file.open(QFile.ReadOnly)
         self.window = loader.load(ui_file, self)
         ui_file.close()
-        self.mainWin = GameWindow("Stick")
+        self.mainWin = GameWindow("Excel")
         print(self.mainWin.window_info)
+                                                                        #Anything tied to a button or ui element will use the format of _function_name():
 
-        if(file == "POEGUI/form.ui"):
-            self.window.grabWin.clicked.connect(self._pull_screen)
+        if(file == "POEGUI/form.ui"):                                   #can manage what gets loaded for each window object could be accomplished with polymorphism but 
+            self.window.grabWin.clicked.connect(self._pull_screen)      #thats a lot more code for this simple case especially since the current plan is 1 or 2 additional windows
             self.window.grabImg.clicked.connect(self._grab_frame)
 
     def _pull_screen(self):
@@ -44,6 +45,8 @@ class GUI(QWidget):
 
     def _grab_frame(self):
         cv.imshow('', self.mainWin.grab_frame())
+
+    
 
 if __name__ == "__main__":
     app = QApplication([])
