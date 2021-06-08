@@ -116,13 +116,4 @@ class WindowRect():
 
 
 
-if __name__ == "__main__":
-    if is_admin():
-        mainWin = GameWindow("Stick")
-        print(mainWin.window_info)
-        mainWin.move_to_foreground()
-        pyautogui.moveTo(mainWin.rect.center())
-
-
-    else:
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)   
+ 
