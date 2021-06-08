@@ -6,6 +6,7 @@ import numpy as np
 import cv2 as cv
 import time
 import math
+from Helper.functions import is_admin
 
 
 #most of this code is pulled from an old window project I worked on with a friend
@@ -110,12 +111,7 @@ class WindowRect():
         print("{} {}".format(self.bottom, self.top))
         return (x, y)
 
-def is_admin():
-    try: return ctypes.windll.shell32.IsUserAnAdmin()
-    except: return False
 
-def add_log_guas(number, size):
-    return number + np.random.normal(0, math.log(number,2))
 
 if __name__ == "__main__":
     if is_admin():

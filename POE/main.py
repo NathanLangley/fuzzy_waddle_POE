@@ -5,11 +5,12 @@ import sys
 import numpy as np
 import pyautogui
 import ctypes
-from Helper.FindWindow import WindowRect, GameWindow, is_admin, add_log_guas
+from Helper.FindWindow import WindowRect, GameWindow
+from Helper.functions import is_admin, add_log_guas, guas
 from PySide2.QtWidgets import QApplication, QWidget, QPushButton
 from PySide2.QtCore import QFile
 from PySide2.QtUiTools import QUiLoader
-
+TIME_FOR_MOVE = .1              #Constant controlling how fast the mouse moves to destinations should always be modified by guassian
 
 
 class GUI(QWidget):
@@ -33,7 +34,7 @@ class GUI(QWidget):
             mainWin = GameWindow("Stick")
             print(mainWin.window_info)
             mainWin.move_to_foreground()
-            pyautogui.moveTo(mainWin.rect.center() + (np.random.normal(0,20), np.random.normal(0,20)))
+            pyautogui.moveTo(mainWin.rect.center()[0] + guas(20), mainWin.rect.center()[1] + guas(20), TIME_FOR_MOVE + guas(.05), pyautogui.easeOutQuad)
         else:
             ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
 
