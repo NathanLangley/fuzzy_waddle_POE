@@ -2,9 +2,10 @@
 import os
 from pathlib import Path
 import sys
+import numpy as np
 import pyautogui
 import ctypes
-from Helper.FindWindow import WindowRect, GameWindow, is_admin
+from Helper.FindWindow import WindowRect, GameWindow, is_admin, add_log_guas
 from PySide2.QtWidgets import QApplication, QWidget, QPushButton
 from PySide2.QtCore import QFile
 from PySide2.QtUiTools import QUiLoader
@@ -32,7 +33,7 @@ class GUI(QWidget):
             mainWin = GameWindow("Stick")
             print(mainWin.window_info)
             mainWin.move_to_foreground()
-            pyautogui.moveTo(mainWin.rect.center())
+            pyautogui.moveTo(mainWin.rect.center() + (np.random.normal(0,20), np.random.normal(0,20)))
         else:
             ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
 
