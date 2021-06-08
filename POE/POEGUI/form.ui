@@ -27,9 +27,9 @@
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
-     <string>Tab 1</string>
+     <string>Main</string>
     </attribute>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="grabWin">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -40,6 +40,19 @@
      </property>
      <property name="text">
       <string>Pull Up Window</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="grabImg">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>60</y>
+       <width>80</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
      </property>
     </widget>
    </widget>

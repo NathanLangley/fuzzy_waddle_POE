@@ -4,6 +4,7 @@ import os, sys, random
 from collections import namedtuple
 import numpy as np
 import cv2 as cv
+from mss import mss
 import time
 import math
 from Helper.functions import is_admin
@@ -88,6 +89,15 @@ class GameWindow():
         user32.EnumWindows(enum_proc, 0)
         return None if len(results) == 0 else results[0]
 
+    def grab_frame(self):
+        self.rect.update()
+        #print(str(self.mainWin.rect.left) + ", " + str(self.mainWin.rect.top) + ", " + str(self.mainWin.rect.width) + ", " + str(self.mainWin.rect.height))
+        bounding_box = {'top': self.rect.top, 'left': self.rect.left, 'width': self.rect.width, 'height': self.rect.height}
+        sct = mss()
+        img = sct.grab(bounding_box)
+        img = np.array(img)
+        return img
+
 class WindowRect():
     def __init__(self, window_handle):
         self.window_handle = window_handle
@@ -122,4 +132,4 @@ if __name__ == "__main__":
 
 
     else:
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)   

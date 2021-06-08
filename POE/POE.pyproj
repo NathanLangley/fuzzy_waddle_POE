@@ -23,7 +23,7 @@
   <ItemGroup>
     <Compile Include="Helper\functions.py" />
     <Compile Include="main.py" />
-    <Compile Include="Helper\FindWindow.py" />
+    <Compile Include="Helper\Window.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helper\" />
