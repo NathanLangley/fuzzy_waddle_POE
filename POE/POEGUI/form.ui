@@ -52,7 +52,20 @@
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>Grab Image</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="reloadUI">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>60</y>
+       <width>131</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Reload Window Object</string>
      </property>
     </widget>
    </widget>

@@ -8,7 +8,7 @@ from mss import mss
 import time
 import math
 from Helper.functions import is_admin
-
+SW_RESTORE = 9
 
 #most of this code is pulled from an old window project I worked on with a friend
 
@@ -62,6 +62,7 @@ class GameWindow():
         self.rect = WindowRect(self.window_handle)
 
     def move_to_foreground(self):
+        user32.ShowWindow(self.window_handle, SW_RESTORE);
         user32.SetForegroundWindow(self.window_handle)
         time.sleep(0.1)
 

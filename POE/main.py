@@ -16,30 +16,42 @@ TIME_FOR_MOVE = .1              #Constant controlling how fast the mouse moves t
 
 
 class GUI(QWidget):
-    def __init__(self, file):
+    def __init__(self, file, name):
         super(GUI, self).__init__()
-        self.load_ui(file)
+        self.file = file
+        self.name = name
+        self.load_ui()
 
-    def load_ui(self, file):
+    def load_ui(self):
         loader = QUiLoader()
-        path = os.fspath(Path(__file__).resolve().parent / file)
+        path = os.fspath(Path(__file__).resolve().parent / self.file)
         ui_file = QFile(path)
         ui_file.open(QFile.ReadOnly)
         self.window = loader.load(ui_file, self)
         ui_file.close()
-        self.mainWin = GameWindow("Excel")
-        print(self.mainWin.window_info)
+        try:
+            self.mainWin = GameWindow(self.name)
+            print(self.mainWin.window_info)
+        except Exception:
+            print("No window found need to reload object")
+        
                                                                         #Anything tied to a button or ui element will use the format of _function_name():
 
-        if(file == "POEGUI/form.ui"):                                   #can manage what gets loaded for each window object could be accomplished with polymorphism but 
+        if(self.file == "POEGUI/form.ui"):                                   #can manage what gets loaded for each window object could be accomplished with polymorphism but 
             self.window.grabWin.clicked.connect(self._pull_screen)      #thats a lot more code for this simple case especially since the current plan is 1 or 2 additional windows
             self.window.grabImg.clicked.connect(self._grab_frame)
+            self.window.reloadUI.clicked.connect(self.load_ui)
+
 
     def _pull_screen(self):
         if is_admin():
             self.mainWin.move_to_foreground()
             self.mainWin.rect.update()
-            pyautogui.moveTo(self.mainWin.rect.center()[0] + guas(20), self.mainWin.rect.center()[1] + guas(20), TIME_FOR_MOVE + guas(.05), pyautogui.easeOutQuad)
+            try:
+                pyautogui.moveTo(self.mainWin.rect.center()[0] + guas(20), self.mainWin.rect.center()[1] + guas(20), TIME_FOR_MOVE + guas(.05), pyautogui.easeOutQuad)
+            except:
+                pass
+
         else:
             ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
 
@@ -50,6 +62,6 @@ class GUI(QWidget):
 
 if __name__ == "__main__":
     app = QApplication([])
-    widget = GUI("POEGUI/form.ui")
+    widget = GUI("POEGUI/form.ui", "Excel")
     widget.show()
     sys.exit(app.exec_())
