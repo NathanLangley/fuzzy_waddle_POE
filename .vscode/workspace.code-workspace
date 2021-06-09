@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "Helper",
+			"path": "..//POE//Helper"
+		},
+	],
+	"settings": {}
+}
