@@ -1,5 +1,6 @@
 import ctypes
 import pyautogui
+from enum import Enum
 import os, sys, random
 from collections import namedtuple
 import numpy as np
@@ -9,6 +10,23 @@ import time
 import math
 from Helper.functions import is_admin
 SW_RESTORE = 9
+SW_NORMAL = 1
+
+
+class user32_SW():
+    SW_HIDE = 0
+    SW_NORMAL = 1
+    SW_SHOWMINIMIZED = 2
+    SW_MAXIMIZE = 3
+    SW_SHOWNOACTIVE = 4
+    SW_SHOW = 5
+    SW_MINIMIZE = 6
+    SW_SHOWMINNOACTIVE = 7
+    SW_SHOWNA = 8
+    SW_RESTORE = 9
+    SW_SHOWDEFAULT = 10
+    SW_FORCEMINIMIZE = 11
+
 
 #most of this code is pulled from an old window project I worked on with a friend
 
@@ -62,7 +80,7 @@ class GameWindow():
         self.rect = WindowRect(self.window_handle)
 
     def move_to_foreground(self):
-        user32.ShowWindow(self.window_handle, SW_RESTORE);
+        user32.ShowWindow(self.window_handle, user32_SW.SW_RESTORE);
         user32.SetForegroundWindow(self.window_handle)
         time.sleep(0.1)
 

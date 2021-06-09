@@ -38,7 +38,7 @@ class GUI(QWidget):
                                                                         #Anything tied to a button or ui element will use the format of _function_name():
 
         if(self.file == "POEGUI/form.ui"):                                   #can manage what gets loaded for each window object could be accomplished with polymorphism but 
-            self.window.grabWin.clicked.connect(self._pull_screen)      #thats a lot more code for this simple case especially since the current plan is 1 or 2 additional windows
+            self.window.grabWin.clicked.connect(self._pull_screen)           #thats a lot more code for this simple case especially since the current plan is 1 or 2 additional windows
             self.window.grabImg.clicked.connect(self._grab_frame)
             self.window.reloadUI.clicked.connect(self.load_ui)
 
@@ -62,6 +62,6 @@ class GUI(QWidget):
 
 if __name__ == "__main__":
     app = QApplication([])
-    widget = GUI("POEGUI/form.ui", "Excel")
+    widget = GUI("POEGUI/form.ui", "PLC")
     widget.show()
     sys.exit(app.exec_())
