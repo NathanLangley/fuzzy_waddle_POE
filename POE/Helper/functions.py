@@ -16,8 +16,8 @@ def is_admin():
     try: return ctypes.windll.shell32.IsUserAnAdmin()
     except: return False
 
-def add_log_guas(number, size):
-    return number + np.random.normal(0, math.log(size,2))
+def add_guas(mean, variance):
+    return np.random.normal(mean, math.sqrt(variance))
 
-def guas(number):
-    return np.random.normal(0, number)
+def guas(variance):
+    return np.random.normal(0, math.sqrt(variance))

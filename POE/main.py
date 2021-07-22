@@ -5,7 +5,7 @@ import sys
 import pyautogui
 import ctypes
 from Helper.Window import WindowRect, GameWindow
-from Helper.functions import is_admin, add_log_guas, guas
+from Helper.functions import is_admin, add_guas, guas
 from PySide2.QtWidgets import QApplication, QWidget, QPushButton
 from PySide2.QtCore import QFile
 from PySide2.QtUiTools import QUiLoader
