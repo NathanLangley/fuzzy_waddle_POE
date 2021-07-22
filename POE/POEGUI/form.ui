@@ -68,6 +68,19 @@
       <string>Reload Window Object</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="loadFile">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>60</y>
+       <width>80</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Load File</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
