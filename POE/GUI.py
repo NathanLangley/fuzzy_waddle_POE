@@ -37,11 +37,17 @@ class GUI(QWidget):
             self.window.reloadUI.clicked.connect(self.load_ui)
             self.window.loadFile.clicked.connect(self._load_file)
 
-        self.load_ui()
+        self._load_ui()
 
     def console(self, text):
         self.window.Output.appendPlainText(text)
-    def load_ui(self):
+
+
+            
+
+#/////////////////////////////////////////////////////////////////////////////// Button Functions Below
+
+    def _load_ui(self):
         try:
             self.mainWin = GameWindow(self.name)
             self.console(self.mainWin.window_info)
@@ -49,16 +55,13 @@ class GUI(QWidget):
             self.mainWin = None
             self.console("No window found need to reload object")
 
-            
-
-#/////////////////////////////////////////////////////////////////////////////// Button Functions Below
-
     def _load_file(self):
         try:
             filename, _ = QFileDialog.getOpenFileName(self, dir = "/", filter = ("Image Files (*.png *.jpg *.bmp)"))
             self.console(filename + ' - Loaded')
         except:
             pass
+
     def _pull_screen(self):
         if is_admin():
             try:
