@@ -34,7 +34,7 @@ class GUI(QWidget):
         if(self.file == "POEGUI/form.ui"):                                   #can manage what gets loaded for each window object could be accomplished with polymorphism but 
             self.window.grabWin.clicked.connect(self._pull_screen)           #thats a lot more code for this simple case especially since the current plan is 1 or 2 additional windows
             self.window.grabImg.clicked.connect(self._grab_frame)
-            self.window.reloadUI.clicked.connect(self.load_ui)
+            self.window.reloadUI.clicked.connect(self._load_ui)
             self.window.loadFile.clicked.connect(self._load_file)
 
         self._load_ui()
