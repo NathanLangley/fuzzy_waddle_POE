@@ -81,6 +81,22 @@
       <string>Load File</string>
      </property>
     </widget>
+    <widget class="QPlainTextEdit" name="Output">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>60</y>
+       <width>291</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="centerOnScroll">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">

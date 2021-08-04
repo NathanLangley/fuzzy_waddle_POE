@@ -12,6 +12,11 @@ from Helper.functions import is_admin
 SW_RESTORE = 9
 SW_NORMAL = 1
 
+class MyStream(object):
+    def write(self, text):
+        # Add text to a QTextEdit...
+        pass
+
 
 class user32_SW():
     SW_HIDE = 0
