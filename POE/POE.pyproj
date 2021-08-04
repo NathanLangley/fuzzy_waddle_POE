@@ -11,6 +11,8 @@
     <OutputPath>.</OutputPath>
     <Name>POE</Name>
     <RootNamespace>POE</RootNamespace>
+    <PublishUrl>
+    </PublishUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
