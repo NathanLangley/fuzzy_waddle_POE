@@ -114,6 +114,7 @@ class WindowRect():
     def __init__(self, window_handle):
         self.window_handle = window_handle
         self.update()
+        
 
     def update(self):
         rect = ctypes.wintypes.RECT()

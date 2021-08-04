@@ -7,6 +7,7 @@ from Helper.Window import WindowRect, GameWindow
 from Helper.functions import is_admin, add_guas, guas
 from PySide2.QtWidgets import QApplication, QWidget, QPushButton, QFileDialog
 from PySide2.QtCore import QFile
+from PySide2.QtGui import QIcon
 from PySide2.QtUiTools import QUiLoader
 import cv2 as cv
 import numpy as np
@@ -29,13 +30,14 @@ class GUI(QWidget):
         ui_file = QFile(path)
         ui_file.open(QFile.ReadOnly)
         self.window = loader.load(ui_file, self)
+        self.setWindowIcon(QIcon('C:\\Users\\LSI Setup\\Pictures\\icon.png'))
         ui_file.close()
         try:
             self.mainWin = GameWindow(self.name)
             print(self.mainWin.window_info)
         except Exception:
             print("No window found need to reload object")
-        
+
                                                                         #Anything tied to a button or ui element will use the format of _function_name():
 
         if(self.file == "POEGUI/form.ui"):                                   #can manage what gets loaded for each window object could be accomplished with polymorphism but 
@@ -43,6 +45,8 @@ class GUI(QWidget):
             self.window.grabImg.clicked.connect(self._grab_frame)
             self.window.reloadUI.clicked.connect(self.load_ui)
             self.window.loadFile.clicked.connect(self._load_file)
+
+#/////////////////////////////////////////////////////////////////////////////// Button Functions Below
 
     def _load_file(self):
         filename, _ = QFileDialog.getOpenFileName(self, dir = "/", filter = ("Image Files (*.png *.jpg *.bmp)"))
