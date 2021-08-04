@@ -58,7 +58,8 @@ class GUI(QWidget):
     def _load_file(self):
         try:
             filename, _ = QFileDialog.getOpenFileName(self, dir = "/", filter = ("Image Files (*.png *.jpg *.bmp)"))
-            self.console(filename + ' - Loaded')
+            if(filename != ""):
+                self.console(filename + ' - Loaded')
         except:
             pass
 
