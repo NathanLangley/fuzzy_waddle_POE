@@ -10,6 +10,8 @@ import os
 #pyinstaller --onefile --add-data="C:\Users\LSI Setup\source\repos\POE\POE\;." "C:\Users\LSI Setup\source\repos\POE\POE\main.py"
 #change filespaths but that may work for building into an exe it leaves some.py files in with the way the path is setup but not important right now.
 
+#when building the .exe change main to a .pyw file to suppress console output
+
 filename = 'POEGUI\form.ui'
 if hasattr(sys, '_MEIPASS'):
     # PyInstaller >= 1.6
