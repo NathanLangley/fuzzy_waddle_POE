@@ -57,12 +57,19 @@ class GUI(QWidget):
             self.console("No window found need to reload object")
 
     def _load_file(self):
-        try:
-            filename, _ = QFileDialog.getOpenFileName(self.parentWidget(), dir = "/", filter = ("Image Files (*.png *.jpg *.bmp)"))
-            if(filename != ""):
-                self.console(filename + ' - Loaded')
-        except:
+#        try:
+        file = QFileDialog(None)
+        file.setNameFilter(("Images (*.png *.xpm *.jpg)"))
+        if(file.exec()):
+            filename = file.selectedFiles()
+        if(len(filename) == 1):
+            self.console(filename[0] + ' - Loaded')
+        elif(len(filename) == 0):
             pass
+        elif(len(filename) > 1):
+            self.console('Select 1 File')
+#        except:
+#            pass
 
     def _pull_screen(self):
         if is_admin():
