@@ -1,109 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>GUI</class>
- <widget class="QWidget" name="GUI">
+ <class>form</class>
+ <widget class="QMainWindow" name="form">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>801</width>
+    <height>619</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>GUI</string>
+   <string>form</string>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Main</string>
+     </attribute>
+     <widget class="QPushButton" name="grabWin">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>60</y>
+        <width>111</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pull Up Window</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="grabImg">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>60</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Grab Image</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="reloadUI">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>60</y>
+        <width>131</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reload Window Object</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="loadFile">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>60</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Load File</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="Output">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>60</y>
+        <width>291</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="centerOnScroll">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>801</width>
-     <height>601</height>
+     <height>25</height>
     </rect>
    </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Main</string>
-    </attribute>
-    <widget class="QPushButton" name="grabWin">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>60</y>
-       <width>111</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Pull Up Window</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="grabImg">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>60</y>
-       <width>80</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Grab Image</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="reloadUI">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>60</y>
-       <width>131</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Reload Window Object</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="loadFile">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>60</y>
-       <width>80</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Load File</string>
-     </property>
-    </widget>
-    <widget class="QPlainTextEdit" name="Output">
-     <property name="geometry">
-      <rect>
-       <x>490</x>
-       <y>60</y>
-       <width>291</width>
-       <height>221</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="centerOnScroll">
-      <bool>true</bool>
-     </property>
-    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionTest"/>
    </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>Tab 2</string>
-    </attribute>
-   </widget>
+   <addaction name="menuFile"/>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTest">
+   <property name="text">
+    <string>Test</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
