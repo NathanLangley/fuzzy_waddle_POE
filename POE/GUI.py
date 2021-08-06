@@ -28,7 +28,8 @@ class GUI(QWidget):
         ui_file.open(QFile.ReadOnly)
         self.window = loader.load(ui_file, self)
         self.setWindowIcon(QIcon('C:\\Users\\LSI Setup\\Pictures\\icon.png'))
-        ui_file.close()                                                       
+        ui_file.close()           
+        self.setWindowTitle('GUI')
 
                                                                              #Anything tied to a button or ui element will use the format of _function_name():
         if(self.file == "POEGUI/form.ui"):                                   #can manage what gets loaded for each window object could be accomplished with polymorphism but 
@@ -50,8 +51,8 @@ class GUI(QWidget):
     def _load_ui(self):
         try:
             self.mainWin = GameWindow(self.name)
-            self.console(self.mainWin.window_info)
-        except Exception:
+            self.console(self.mainWin.window_info.title)
+        except TypeError:
             self.mainWin = None
             self.console("No window found need to reload object")
 
