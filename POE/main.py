@@ -23,6 +23,7 @@ import os
 
 if __name__ == "__main__":
     app = QApplication([])
+    app.setQuitOnLastWindowClosed(False)
     widget = GUI("POEGUI/form.ui", "POE")
     widget.window.show()
     sys.exit(app.exec_())

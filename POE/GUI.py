@@ -20,6 +20,7 @@ TIME_FOR_MOVE = .1              #Constant controlling how fast the mouse moves t
 class GUI(QWidget):
     def __init__(self, file, name):
         super(GUI, self).__init__()
+        self.file_close_fix = True                                             #FileDialog kills parent so fix for that seems to be a bug with QT
         self.file = file
         self.name = name
         loader = QUiLoader()
@@ -40,6 +41,13 @@ class GUI(QWidget):
             self.window.loadFile.clicked.connect(self._load_file)
 
         self._load_ui()
+    def closeEvent(self, event):
+        # do stuff
+        if file_close_fix:
+            event.accept() # let the window close
+        else:
+            file_close_fix = True
+            event.ignore()
     def console(self, text):
         self.window.Output.appendPlainText(text)
 
@@ -57,19 +65,20 @@ class GUI(QWidget):
             self.console("No window found need to reload object")
 
     def _load_file(self):
-#        try:
-        file = QFileDialog(None)
-        file.setNameFilter(("Images (*.png *.xpm *.jpg)"))
-        if(file.exec()):
-            filename = file.selectedFiles()
-        if(len(filename) == 1):
-            self.console(filename[0] + ' - Loaded')
-        elif(len(filename) == 0):
+        try:
+            file = QFileDialog(None)
+            file.setNameFilter(("Images (*.png *.xpm *.jpg)"))
+            if(file.exec()):
+                self.file_close_fix = False
+                filename = file.selectedFiles()
+            if(len(filename) == 1):
+                self.console(filename[0] + ' - Loaded')
+            elif(len(filename) == 0):
+                pass
+            elif(len(filename) > 1):
+                self.console('Select 1 File')
+        except:
             pass
-        elif(len(filename) > 1):
-            self.console('Select 1 File')
-#        except:
-#            pass
 
     def _pull_screen(self):
         if is_admin():
