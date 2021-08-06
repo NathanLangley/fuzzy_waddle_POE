@@ -24,5 +24,5 @@ import os
 if __name__ == "__main__":
     app = QApplication([])
     widget = GUI("POEGUI/form.ui", "POE")
-    widget.show()
+    widget.window.show()
     sys.exit(app.exec_())

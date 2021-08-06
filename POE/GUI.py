@@ -27,9 +27,10 @@ class GUI(QWidget):
         ui_file = QFile(path)
         ui_file.open(QFile.ReadOnly)
         self.window = loader.load(ui_file, self)
+
         self.setWindowIcon(QIcon('C:\\Users\\LSI Setup\\Pictures\\icon.png'))
         ui_file.close()           
-        self.setWindowTitle('GUI')
+        self.window.setWindowTitle('GUI')
 
                                                                              #Anything tied to a button or ui element will use the format of _function_name():
         if(self.file == "POEGUI/form.ui"):                                   #can manage what gets loaded for each window object could be accomplished with polymorphism but 
@@ -39,7 +40,6 @@ class GUI(QWidget):
             self.window.loadFile.clicked.connect(self._load_file)
 
         self._load_ui()
-
     def console(self, text):
         self.window.Output.appendPlainText(text)
 
@@ -58,7 +58,7 @@ class GUI(QWidget):
 
     def _load_file(self):
         try:
-            filename, _ = QFileDialog.getOpenFileName(self, dir = "/", filter = ("Image Files (*.png *.jpg *.bmp)"))
+            filename, _ = QFileDialog.getOpenFileName(self.parentWidget(), dir = "/", filter = ("Image Files (*.png *.jpg *.bmp)"))
             if(filename != ""):
                 self.console(filename + ' - Loaded')
         except:
